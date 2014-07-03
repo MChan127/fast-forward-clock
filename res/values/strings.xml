@@ -7,5 +7,6 @@
 	<string name="speedbtn15">1.5x</string>
     <string name="speedbtn2">2x</string>
     <string name="speedtitle">Set Clock Speed</string>
+    <string name="resetbtn">Reset</string>
 	
 </resources>

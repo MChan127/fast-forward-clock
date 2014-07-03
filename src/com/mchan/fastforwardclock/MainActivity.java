@@ -67,6 +67,15 @@ public class MainActivity extends FragmentActivity {
  		bg_timer.start();
     }
     
+    public void resetClock(View view) {
+    	clock.resetClock();
+    	
+    	// reset to normal rate
+    	currRateBtn.setChecked(false);
+        currRateBtn = (ToggleButton)findViewById(R.id.speedbtn1x);
+        currRateBtn.setChecked(true);
+    }
+    
     public void setRate(View view) {
     	// check if button is already selected
     	if (currRateBtn != (ToggleButton)view) {

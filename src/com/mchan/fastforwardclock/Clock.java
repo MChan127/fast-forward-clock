@@ -31,9 +31,6 @@ public class Clock implements Runnable {
 		// initialize time to now
 		// sets hour, minute and second
 		resetClock();
-		
-		// initial rate is 1x (1000 milliseconds per tick)
-		clockRate = 1000;
 	}
 	
 	@Override
@@ -96,6 +93,9 @@ public class Clock implements Runnable {
 	// resets (resyncs) the clock to the current time 
 	// on the user's phone
 	public void resetClock() {
+		// initial rate is 1x (1000 milliseconds per tick)
+		clockRate = 1000;
+		
 		// create Time object
 		// set to current time
 		Time time = new Time();

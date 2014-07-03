@@ -37,6 +37,7 @@
 	        android:layout_weight="1"
 	        android:textOff="@string/speedbtn1"
 	        android:textOn="@string/speedbtn1"
+	        android:textSize="17dp"
 	        android:background="@drawable/speedbutton_states"
 	        android:onClick="setRate" />
 	    
@@ -50,6 +51,7 @@
 	        android:layout_weight="1"
 	        android:textOff="@string/speedbtn125"
 	        android:textOn="@string/speedbtn125"
+	        android:textSize="17dp"
 	        android:background="@drawable/speedbutton_states"
 	        android:onClick="setRate" />
 	    
@@ -63,6 +65,7 @@
 	        android:layout_weight="1"
 	        android:textOff="@string/speedbtn15"
 	        android:textOn="@string/speedbtn15"
+	        android:textSize="17dp"
 	        android:background="@drawable/speedbutton_states"
 	        android:onClick="setRate" />
 	    
@@ -75,6 +78,7 @@
 	        android:layout_weight="1"
 	        android:textOff="@string/speedbtn2"
 	        android:textOn="@string/speedbtn2"
+	        android:textSize="17dp"
 	        android:background="@drawable/speedbutton_states"
 	        android:onClick="setRate" />
 	    
