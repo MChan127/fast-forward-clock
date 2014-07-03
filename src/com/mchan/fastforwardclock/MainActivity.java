@@ -8,11 +8,12 @@ import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class MainActivity extends FragmentActivity {
 	// currently selected speed (button)
 	// this is only for button highlighting
-	View currRateBtn;
+	ToggleButton currRateBtn;
 	
 	// handler receives time values from other thread and 
 	// displays them on the clock fragment as a TextView
@@ -52,6 +53,10 @@ public class MainActivity extends FragmentActivity {
         
         // set this activity's view to activity_main.xml
         setContentView(R.layout.activity_main);
+        
+        // toggle first button on (for normal clock rate at 1x)
+        currRateBtn = (ToggleButton)findViewById(R.id.speedbtn1x);
+        currRateBtn.setChecked(true);
  		
  		// create the Clock object, passes it the handler
  		// create the thread and pass it the Clock (runnable)
@@ -61,5 +66,11 @@ public class MainActivity extends FragmentActivity {
     }
     
     public void setRate(View view) {
+    	if (currRateBtn != (ToggleButton)view) {
+	    	currRateBtn.setChecked(false);
+	    	currRateBtn = (ToggleButton)view;
+    	} else {
+    		currRateBtn.setChecked(true);
+    	}
     }
 }
