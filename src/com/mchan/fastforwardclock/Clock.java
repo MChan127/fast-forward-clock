@@ -20,7 +20,7 @@ public class Clock implements Runnable {
 	private int currSec;
 
 	// speed of the timer
-	private String clockRate;
+	private int clockRate;
 	
 	public Clock(Handler handler) {
 		this.handler = handler;
@@ -32,8 +32,8 @@ public class Clock implements Runnable {
 		// sets hour, minute and second
 		resetClock();
 		
-		// initial rate is 1x (normal clock rate)
-		clockRate = "1x";
+		// initial rate is 1x (1000 milliseconds per tick)
+		clockRate = 1000;
 	}
 	
 	@Override
@@ -42,7 +42,7 @@ public class Clock implements Runnable {
 		// on user-chosen rate
 		while (running) {
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(clockRate);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -68,17 +68,8 @@ public class Clock implements Runnable {
 		currSec++;
 		
 		// update minutes
-		if (clockRate == "1x" && currSec > 59) {
+		if (currSec > 59) {
 			currSec = 0;
-			currMin++;
-		} else if (clockRate == "1.25x" && currSec > 47) {
-			currSec = 0; 
-			currMin++;
-		} else if (clockRate == "1.5x" && currSec > 39) {
-			currSec = 0;
-			currMin++;
-		} else if (clockRate == "2x" && currSec > 29) {
-			currSec = 0; 
 			currMin++;
 		}
 			
@@ -117,7 +108,7 @@ public class Clock implements Runnable {
 	}
 	
 	// sets the rate of the clock based on user setting
-	public void setRate(String rate) {
+	public void setRate(int rate) {
 		clockRate = rate;
 	}
 }

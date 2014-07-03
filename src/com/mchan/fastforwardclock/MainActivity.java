@@ -15,6 +15,8 @@ public class MainActivity extends FragmentActivity {
 	// this is only for button highlighting
 	ToggleButton currRateBtn;
 	
+	// the clock object
+	Clock clock;
 	// handler receives time values from other thread and 
 	// displays them on the clock fragment as a TextView
 	Handler handler = new Handler() {
@@ -60,15 +62,32 @@ public class MainActivity extends FragmentActivity {
  		
  		// create the Clock object, passes it the handler
  		// create the thread and pass it the Clock (runnable)
- 		Clock clock = new Clock(handler);
+ 		clock = new Clock(handler);
  		Thread bg_timer = new Thread(clock);
  		bg_timer.start();
     }
     
     public void setRate(View view) {
+    	// check if button is already selected
     	if (currRateBtn != (ToggleButton)view) {
+    		// set last-selected button to unchecked
+    		// set new current selected btn
 	    	currRateBtn.setChecked(false);
 	    	currRateBtn = (ToggleButton)view;
+	    	
+	    	// change clock speed based on button pressed
+	    	if (currRateBtn == (ToggleButton)findViewById(R.id.speedbtn1x)) {
+	    		clock.setRate(1000);
+	    	} else if (currRateBtn == (ToggleButton)findViewById(R.id.speedbtn125x)) {
+	    		clock.setRate(800);
+	    	} else if (currRateBtn == (ToggleButton)findViewById(R.id.speedbtn15x)){
+	    		clock.setRate(666);
+	    	} else if (currRateBtn == (ToggleButton)findViewById(R.id.speedbtn2x)) {
+	    		clock.setRate(500);
+	    	}
+	    	
+	    // else if same button, nothing changes
+	    // reselect (re-highlight) the button because toggle auto turns it off
     	} else {
     		currRateBtn.setChecked(true);
     	}

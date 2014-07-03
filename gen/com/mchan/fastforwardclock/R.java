@@ -1071,8 +1071,8 @@ containing a value of this type.
         public static final int ffclock=0x7f020057;
         public static final int ic_launcher=0x7f020058;
         public static final int speedbutton=0x7f020059;
-        public static final int speedbutton_focused=0x7f02005a;
-        public static final int speedbutton_pressed=0x7f02005b;
+        public static final int speedbutton_pressed=0x7f02005a;
+        public static final int speedbutton_selected=0x7f02005b;
         public static final int speedbutton_states=0x7f02005c;
     }
     public static final class id {
