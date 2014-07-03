@@ -2,6 +2,10 @@
 <resources>
 
     <string name="app_name">Fast Forward Clock</string>
-    <string name="hello_world">Hello world!</string>
-
+    <string name="speedbtn1">1x</string>
+    <string name="speedbtn125">1.25x</string>
+	<string name="speedbtn15">1.5x</string>
+    <string name="speedbtn2">2x</string>
+    <string name="speedtitle">Set Clock Speed</string>
+	
 </resources>

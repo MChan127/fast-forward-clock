@@ -6,9 +6,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity {
+	// currently selected speed (button)
+	// this is only for button highlighting
+	View currRateBtn;
+	
 	// handler receives time values from other thread and 
 	// displays them on the clock fragment as a TextView
 	Handler handler = new Handler() {
@@ -53,5 +58,8 @@ public class MainActivity extends FragmentActivity {
  		Clock clock = new Clock(handler);
  		Thread bg_timer = new Thread(clock);
  		bg_timer.start();
+    }
+    
+    public void setRate(View view) {
     }
 }

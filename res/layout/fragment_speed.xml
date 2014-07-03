@@ -1,8 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/speed"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    android:textSize="18sp" />
+    android:layout_height="match_parent" 
+    android:background="#000" >
+
+	<LinearLayout android:orientation="horizontal"
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="1" >
+	
+		<TextView android:id="@+id/setRateTitle"
+		    android:layout_height="wrap_content"
+		    android:layout_width="match_parent"
+		    android:gravity="center"
+		    android:layout_marginTop="8dp"
+		    android:text="@string/speedtitle"
+		    android:textSize="25sp"
+		    android:textColor="#fff" />
+	
+	</LinearLayout>
+	
+	<LinearLayout android:orientation="horizontal"
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="2" >
+	    
+	    <Button android:id="@+id/speedbtn1x"
+	        android:layout_height="fill_parent"
+	        android:layout_marginTop="5dp"
+	        android:layout_marginBottom="10dp"
+	        android:layout_marginRight="5dp"
+	        android:layout_width="0dp"
+	        android:layout_weight="1"
+	        android:hint="@string/speedbtn1"
+	        android:background="@drawable/speedbutton_states"
+	        android:onClick="setRate" />
+	    
+	    <Button android:id="@+id/speedbtn125x"
+	        android:layout_height="fill_parent"
+	        android:layout_marginTop="5dp"
+	        android:layout_marginBottom="10dp"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginRight="5dp"
+	        android:layout_width="0dp"
+	        android:layout_weight="1"
+	        android:hint="@string/speedbtn125"
+	        android:background="@drawable/speedbutton_states"
+	        android:onClick="setRate" />
+	    
+	    <Button android:id="@+id/speedbtn15x"
+	        android:layout_height="fill_parent"
+	        android:layout_marginTop="5dp"
+	        android:layout_marginBottom="10dp"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginRight="5dp"
+	        android:layout_width="0dp"
+	        android:layout_weight="1"
+	        android:hint="@string/speedbtn15"
+	        android:background="@drawable/speedbutton_states"
+	        android:onClick="setRate" />
+	    
+	    <Button android:id="@+id/speedbtn2x"
+	        android:layout_height="fill_parent"
+	        android:layout_marginTop="5dp"
+	        android:layout_marginBottom="10dp"
+	        android:layout_marginLeft="5dp"
+	        android:layout_width="0dp"
+	        android:layout_weight="1"
+	        android:hint="@string/speedbtn2"
+	        android:background="@drawable/speedbutton_states"
+	        android:onClick="setRate" />
+	    
+	</LinearLayout>
+</LinearLayout>
