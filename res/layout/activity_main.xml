@@ -6,20 +6,19 @@
               
     <fragment android:name="com.mchan.fastforwardclock.ClockFragment" 
         	  android:id="@+id/clock_fragment"
-        	  android:layout_weight="2"
+        	  android:layout_weight="3"
         	  android:layout_width="match_parent" 
+        	  android:layout_height="0dp" />
+    
+    <fragment android:name="com.mchan.fastforwardclock.OptionFragment"
+        	  android:id="@+id/option_fragment"
+        	  android:layout_weight="1"
+        	  android:layout_width="match_parent"
         	  android:layout_height="0dp" />
     
     <fragment android:name="com.mchan.fastforwardclock.SpeedFragment"
         	  android:id="@+id/speed_fragment"
-        	  android:layout_weight="1"
+        	  android:layout_weight="2"
         	  android:layout_width="match_parent"
-        	  android:layout_height="0dp" />
-    
-    <fragment android:name="com.mchan.fastforwardclock.GuessFragment"
-        	  android:id="@+id/guess_fragment"
-        	  android:layout_weight="1"
-        	  android:layout_width="match_parent"
-        	  android:layout_height="0dp" />
-
+        	  android:layout_height="0dp" />   
 </LinearLayout>

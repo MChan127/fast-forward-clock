@@ -87,12 +87,12 @@ public class MainActivity extends FragmentActivity {
 	    	// change clock speed based on button pressed
 	    	if (currRateBtn == (ToggleButton)findViewById(R.id.speedbtn1x)) {
 	    		clock.setRate(1000);
-	    	} else if (currRateBtn == (ToggleButton)findViewById(R.id.speedbtn125x)) {
-	    		clock.setRate(800);
-	    	} else if (currRateBtn == (ToggleButton)findViewById(R.id.speedbtn15x)){
+	    	} else if (currRateBtn == (ToggleButton)findViewById(R.id.speedbtn15x)) {
 	    		clock.setRate(666);
-	    	} else if (currRateBtn == (ToggleButton)findViewById(R.id.speedbtn2x)) {
+	    	} else if (currRateBtn == (ToggleButton)findViewById(R.id.speedbtn2x)){
 	    		clock.setRate(500);
+	    	} else if (currRateBtn == (ToggleButton)findViewById(R.id.speedbtn3x)) {
+	    		clock.setRate(333);
 	    	}
 	    	
 	    // else if same button, nothing changes

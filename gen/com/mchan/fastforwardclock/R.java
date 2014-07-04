@@ -1102,8 +1102,6 @@ containing a value of this type.
         public static final int end=0x7f050013;
         public static final int expand_activities_button=0x7f050026;
         public static final int expanded_menu=0x7f05002c;
-        public static final int guess=0x7f050040;
-        public static final int guess_fragment=0x7f05003e;
         public static final int home=0x7f050014;
         public static final int homeAsUp=0x7f050005;
         public static final int icon=0x7f05002a;
@@ -1115,6 +1113,7 @@ containing a value of this type.
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
+        public static final int option_fragment=0x7f05003d;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
@@ -1128,16 +1127,16 @@ containing a value of this type.
         public static final int search_plate=0x7f050036;
         public static final int search_src_text=0x7f050037;
         public static final int search_voice_btn=0x7f05003b;
-        public static final int setRateTitle=0x7f050041;
+        public static final int setRateTitle=0x7f050040;
         public static final int shortcut=0x7f05002e;
         public static final int showCustom=0x7f050007;
         public static final int showHome=0x7f050004;
         public static final int showTitle=0x7f050006;
-        public static final int speed_fragment=0x7f05003d;
-        public static final int speedbtn125x=0x7f050043;
-        public static final int speedbtn15x=0x7f050044;
-        public static final int speedbtn1x=0x7f050042;
-        public static final int speedbtn2x=0x7f050045;
+        public static final int speed_fragment=0x7f05003e;
+        public static final int speedbtn15x=0x7f050042;
+        public static final int speedbtn1x=0x7f050041;
+        public static final int speedbtn2x=0x7f050043;
+        public static final int speedbtn3x=0x7f050044;
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
@@ -1199,7 +1198,7 @@ containing a value of this type.
         public static final int abc_simple_decor=0x7f030017;
         public static final int activity_main=0x7f030018;
         public static final int fragment_clock=0x7f030019;
-        public static final int fragment_guess=0x7f03001a;
+        public static final int fragment_option=0x7f03001a;
         public static final int fragment_speed=0x7f03001b;
         public static final int support_simple_spinner_dropdown_item=0x7f03001c;
     }
@@ -1247,9 +1246,9 @@ containing a value of this type.
         public static final int app_name=0x7f0a000d;
         public static final int resetbtn=0x7f0a0013;
         public static final int speedbtn1=0x7f0a000e;
-        public static final int speedbtn125=0x7f0a000f;
-        public static final int speedbtn15=0x7f0a0010;
-        public static final int speedbtn2=0x7f0a0011;
+        public static final int speedbtn15=0x7f0a000f;
+        public static final int speedbtn2=0x7f0a0010;
+        public static final int speedbtn3=0x7f0a0011;
         public static final int speedtitle=0x7f0a0012;
     }
     public static final class style {
