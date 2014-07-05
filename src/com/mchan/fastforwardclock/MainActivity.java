@@ -12,8 +12,13 @@ import android.widget.ToggleButton;
 
 public class MainActivity extends FragmentActivity {
 	// currently selected speed (button)
-	// this is only for button highlighting
+	// used for button highlighting
 	ToggleButton currRateBtn;
+	// rate in milliseconds, used to pass through bundle
+	int rateMilli;
+	
+	// current time values
+	int currHour, currMin, currSec;
 	
 	// the clock object
 	Clock clock;
@@ -23,13 +28,13 @@ public class MainActivity extends FragmentActivity {
 		@Override
 		public void handleMessage(Message msg) {
 			// retrieve the time values from the included Bundle object
-			int currHour = msg.getData().getInt("hour");
-			int currMin = msg.getData().getInt("minute");
-			int currSec = msg.getData().getInt("second");
+			currHour = msg.getData().getInt("hour");
+			currMin = msg.getData().getInt("minute");
+			currSec = msg.getData().getInt("second");
 			
 			// converts int values to Strings
 			// single digit values are preceded with a "0"
-			String hourStr = Integer.toString(currHour);
+		    String hourStr = Integer.toString(currHour);
 			String minStr = Integer.toString(currMin);
 			String secStr = Integer.toString(currSec);
 			
@@ -56,15 +61,49 @@ public class MainActivity extends FragmentActivity {
         // set this activity's view to activity_main.xml
         setContentView(R.layout.activity_main);
         
-        // toggle first button on (for normal clock rate at 1x)
-        currRateBtn = (ToggleButton)findViewById(R.id.speedbtn1x);
-        currRateBtn.setChecked(true);
- 		
- 		// create the Clock object, passes it the handler
- 		// create the thread and pass it the Clock (runnable)
- 		clock = new Clock(handler);
- 		Thread bg_timer = new Thread(clock);
- 		bg_timer.start();
+        // if app starting for first time (not restarting)
+        if (savedInstanceState == null) {
+	        // toggle first button on (for normal clock rate at 1x)
+	        currRateBtn = (ToggleButton)findViewById(R.id.speedbtn1x);
+	        currRateBtn.setChecked(true);
+	        rateMilli = 1000;
+	        
+	        // create the Clock object (with default now time)
+	        // pass handler to clock
+	 		// create the thread and pass it the Clock (runnable)
+	 		clock = new Clock(handler);
+	 		Thread bg_timer = new Thread(clock);
+	 		bg_timer.start();
+        } else {
+        	// set to whatever previously selected rate was
+        	rateMilli = savedInstanceState.getInt("rateMilli");
+        	if (rateMilli == 1000) {
+        		currRateBtn = (ToggleButton)findViewById(R.id.speedbtn1x);
+        	} else if (rateMilli == 666) {
+        		currRateBtn = (ToggleButton)findViewById(R.id.speedbtn15x);
+        	} else if (rateMilli == 500) {
+        		currRateBtn = (ToggleButton)findViewById(R.id.speedbtn2x);
+        	} else if (rateMilli == 333) {
+        		currRateBtn = (ToggleButton)findViewById(R.id.speedbtn3x);
+        	}
+        	
+        	// create clock with previous time and rate
+        	clock = new Clock(handler, savedInstanceState.getIntArray("currTimeValues"), rateMilli);
+        	Thread bg_timer = new Thread(clock);
+	 		bg_timer.start();
+        }
+    }
+    
+    // store current configuration in case of orientation change
+    // (phone rotation)
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+    	super.onSaveInstanceState(savedInstanceState);
+    	
+    	savedInstanceState.putInt("rateMilli", rateMilli);
+    	int timeValues[] = {currHour, currMin, currSec};
+    	
+    	savedInstanceState.putIntArray("currTimeValues", timeValues);
     }
     
     public void resetClock(View view) {
@@ -74,8 +113,9 @@ public class MainActivity extends FragmentActivity {
     	currRateBtn.setChecked(false);
         currRateBtn = (ToggleButton)findViewById(R.id.speedbtn1x);
         currRateBtn.setChecked(true);
+        rateMilli = 1000;
     }
-    
+	
     public void setRate(View view) {
     	// check if button is already selected
     	if (currRateBtn != (ToggleButton)view) {
@@ -86,13 +126,17 @@ public class MainActivity extends FragmentActivity {
 	    	
 	    	// change clock speed based on button pressed
 	    	if (currRateBtn == (ToggleButton)findViewById(R.id.speedbtn1x)) {
-	    		clock.setRate(1000);
+	    		rateMilli = 1000;
+	    		clock.setRate(rateMilli);
 	    	} else if (currRateBtn == (ToggleButton)findViewById(R.id.speedbtn15x)) {
-	    		clock.setRate(666);
+	    		rateMilli = 666;
+	    		clock.setRate(rateMilli);
 	    	} else if (currRateBtn == (ToggleButton)findViewById(R.id.speedbtn2x)){
-	    		clock.setRate(500);
+	    		rateMilli = 500;
+	    		clock.setRate(rateMilli);
 	    	} else if (currRateBtn == (ToggleButton)findViewById(R.id.speedbtn3x)) {
-	    		clock.setRate(333);
+	    		rateMilli = 333;
+	    		clock.setRate(rateMilli);
 	    	}
 	    	
 	    // else if same button, nothing changes

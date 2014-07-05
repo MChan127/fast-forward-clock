@@ -15,9 +15,7 @@ public class Clock implements Runnable {
 	
 	// timer is based on the below values
 	// and constantly updates/posts them
-	private int currHour;
-	private int currMin;
-	private int currSec;
+	private int currHour, currMin, currSec;
 
 	// speed of the timer
 	private int clockRate;
@@ -31,6 +29,20 @@ public class Clock implements Runnable {
 		// initialize time to now
 		// sets hour, minute and second
 		resetClock();
+	}
+	
+	// alternate constructor for if activity restarts
+	// passes in previous time values and clock rate
+	public Clock(Handler handler, int[] timeValues, int rate) {
+		this.handler = handler;
+		
+		running = true;
+		
+		currHour = timeValues[0];
+		currMin = timeValues[1];
+		currSec = timeValues[2];
+				
+		setRate(rate);
 	}
 	
 	@Override
