@@ -13,38 +13,42 @@ import android.widget.ToggleButton;
 public class MainActivity extends FragmentActivity {
 	// currently selected speed (button)
 	// used for button highlighting
+	// passed through bundle when activity restarts
 	ToggleButton currRateBtn;
-	// rate in milliseconds, used to pass through bundle
+	
+	// rate in milliseconds
+	// passed through bundle when activity restarts
 	int rateMilli;
 	
-	// current time values
-	int currHour, currMin, currSec;
+	// array of current time values
+	int currTime[] = new int[3];
 	
 	// the clock object
 	Clock clock;
+	
 	// handler receives time values from other thread and 
 	// displays them on the clock fragment as a TextView
 	Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
 			// retrieve the time values from the included Bundle object
-			currHour = msg.getData().getInt("hour");
-			currMin = msg.getData().getInt("minute");
-			currSec = msg.getData().getInt("second");
+			currTime[0] = msg.getData().getInt("hour");
+			currTime[1] = msg.getData().getInt("minute");
+			currTime[2] = msg.getData().getInt("second");
 			
 			// converts int values to Strings
 			// single digit values are preceded with a "0"
-		    String hourStr = Integer.toString(currHour);
-			String minStr = Integer.toString(currMin);
-			String secStr = Integer.toString(currSec);
+		    String hourStr = Integer.toString(currTime[0]);
+			String minStr = Integer.toString(currTime[1]);
+			String secStr = Integer.toString(currTime[2]);
 			
-			if (currHour < 10) {
+			if (currTime[0] < 10) {
 				hourStr = "0" + hourStr;
 			}
-			if (currMin < 10) {
+			if (currTime[1] < 10) {
 				minStr = "0" + minStr;
 			}
-			if (currSec < 10) {
+			if (currTime[2] < 10) {
 				secStr = "0" + secStr;
 			}
 			
@@ -88,7 +92,7 @@ public class MainActivity extends FragmentActivity {
         	}
         	
         	// create clock with previous time and rate
-        	clock = new Clock(handler, savedInstanceState.getIntArray("currTimeValues"), rateMilli);
+        	clock = new Clock(handler, savedInstanceState.getIntArray("currTime"), rateMilli);
         	Thread bg_timer = new Thread(clock);
 	 		bg_timer.start();
         }
@@ -100,10 +104,11 @@ public class MainActivity extends FragmentActivity {
     public void onSaveInstanceState(Bundle savedInstanceState) {
     	super.onSaveInstanceState(savedInstanceState);
     	
+    	// stores rate
     	savedInstanceState.putInt("rateMilli", rateMilli);
-    	int timeValues[] = {currHour, currMin, currSec};
     	
-    	savedInstanceState.putIntArray("currTimeValues", timeValues);
+    	// stores time array (of hour, min, sec)
+    	savedInstanceState.putIntArray("currTime", currTime);
     }
     
     public void resetClock(View view) {

@@ -33,14 +33,14 @@ public class Clock implements Runnable {
 	
 	// alternate constructor for if activity restarts
 	// passes in previous time values and clock rate
-	public Clock(Handler handler, int[] timeValues, int rate) {
+	public Clock(Handler handler, int[] currTime, int rate) {
 		this.handler = handler;
 		
 		running = true;
 		
-		currHour = timeValues[0];
-		currMin = timeValues[1];
-		currSec = timeValues[2];
+		currHour = currTime[0];
+		currMin = currTime[1];
+		currSec = currTime[2];
 				
 		setRate(rate);
 	}
